@@ -1,4 +1,5 @@
 # Cypress Cucumber Boilerplate
+This boilerplate is a ready-to-use project that using Cypress with Cucumber style. 
 
 ## Installation guide
 
