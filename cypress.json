@@ -1,0 +1,21 @@
+{
+  "chromeWebSecurity": false,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "reportDir": "reports/mocha"
+  },
+  "integrationFolder": "integration",
+  "fixturesFolder": "fixtures",
+  "pluginsFile": "plugins/index.js",
+  "supportFile": "support/index.js",
+  "videosFolder": "videos",
+  "video": false,
+  "screenshotsFolder": "screenshots",
+  "defaultCommandTimeout": 60000,
+  "pageLoadTimeout": 60000,
+  "responseTimeout": 50000,
+  "browser": "chrome"
+}

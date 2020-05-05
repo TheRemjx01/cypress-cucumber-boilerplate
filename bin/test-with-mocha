@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+extraArgs=""
+
+help_command_detect=false
+
+usage() {
+  echo"
+Run test and generate mocha report
+
+Usage:
+  ./bin/test-e2e
+
+Options:
+  -e[--env]       Set environment want to test
+  -h[--help]      View function usage
+  -u[--url]       Set url of web app
+  -s[--spec]      Set specific path of test case that want to run
+  -b[--browser]   Set browser to run test. Browser includes in ["chrome", "chromium" "electron"]
+  --headed        Display Electron browser instead of running headlessly
+"
+}
+
+for i in "$@"
+do
+case $i in
+  -h|--help)
+  help_command_detect=true
+  shift
+  ;;
+  -b=*|--browser=*)
+  BROWSER_SELECT="${i#*=}"
+  shift
+  ;;
+  -e=*|--env=*)
+  CYPRESS_DEVENV='stg'
+  shift
+  ;;
+  -u=*|--url=*)
+  CYPRESS_BASEURL="${i#*=}"
+  shift
+  ;;
+  -s=*|--spec=*)
+  TEST_CASE="${i#*=}"
+  shift
+  ;;
+  --default)
+  DEFAULT=YES
+  shift
+  ;;
+  *)
+    # unknown option
+  ;;
+esac
+done
+
+if [[ "${help_command_detect}" = true ]]
+then
+  usage
+  exit 0
+fi
+
+if [[ ! -z "$TEST_CASE" ]]
+then
+extraArgs+=" --spec ${TEST_CASE}"
+fi
+
+if [[ ! -z "${BROWSER_SELECT}" ]]
+then
+extraArgs+=" --browser ${BROWSER_SELECT}"
+fi
+
+
+DEFAULT_DEVENV="dev"
+export CYPRESS_devEnv=${CYPRESS_DEVENV-${DEFAULT_DEVENV}}
+
+DEFAULT_baseUrl="https://jaya.grab.dev"
+export CYPRESS_baseUrl=${CYPRESS_BASEURL-${DEFAULT_baseUrl}}
+
+
+npm run test:mocha:clean;
+
+if [ -z "${extraArgs}" ]
+then
+  echo "Cypress testing will be running on default mode"
+  npm run test:e2e:run
+else
+  echo "Cypress testing will be running on ${CYPRESS_baseUrl} with extra args: ${extraArgs}..."
+  npm run test:e2e:run -- ${extraArgs};
+fi
+
+npm run test:mocha:merge-report;
+npm run test:mocha:gen-html-report;
+
+exit 0;
