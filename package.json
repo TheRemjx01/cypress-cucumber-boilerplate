@@ -4,6 +4,7 @@
   "description": "A boilerplate for cypress with cucumber style",
   "main": "index.js",
   "scripts": {
+    "start:web-app": "cd ./demo-webapp && npm run start",
     "test:open": "cypress open",
     "test:run": "cypress run",
     "test:mocha:merge-report": "mochawesome-merge --reportDir reports/mocha > reports/mocha/summary.json",

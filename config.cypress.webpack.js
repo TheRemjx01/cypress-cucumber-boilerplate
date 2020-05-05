@@ -6,11 +6,10 @@ function resolveAlias() {
     return {
         '@cyIntegration': `${srcDirectory}/integration`,
         '@cySupport': `${srcDirectory}/support`,
-        '@cyGql': `${srcDirectory}/gql`,
-        '@cyConstants': `${srcDirectory}/integration/constants`,
-        '@cySql': `${srcDirectory}/sql`,
+        '@cyConstants': `${srcDirectory}/constants`,
+        '@cyHelpers': `${srcDirectory}/helpers`,
         '@cyPlugins': `${srcDirectory}/plugins`,
-        '@cyCommon': `${srcDirectory}/integration/common`,
+        '@cyCucumberCommon': `${srcDirectory}/integration/common`,
     };
 }
 

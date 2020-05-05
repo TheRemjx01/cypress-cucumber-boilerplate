@@ -12,7 +12,7 @@
 const webpack = require('@cypress/webpack-preprocessor');
 // the project's config changing)
 
-const webpackOptions = require('../config.webpack_cypress');
+const webpackOptions = require('../config.cypress.webpack');
 
 module.exports = (on, config) => {
     // `on` is used to hook into various events Cypress emits
