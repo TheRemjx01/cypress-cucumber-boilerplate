@@ -10,6 +10,13 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <button hidden
+                onClick={() => console.log('clicked')}
+                cy-id='hidden-btn'
+                style={{color: 'white'}}
+        >
+          Disabled button
+        </button>
         <a
           className="App-link"
           href="https://reactjs.org"

@@ -1,0 +1,1 @@
+export const HIDDEN_BTN = '[cy-id="hidden-btn"]';
