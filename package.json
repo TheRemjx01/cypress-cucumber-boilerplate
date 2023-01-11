@@ -21,7 +21,7 @@
     "cypress": "^3.4.1",
     "cypress-cucumber-preprocessor": "^1.15.1",
     "cypress-testrail-accumulative-reporter": "^1.1.4",
-    "knex": "^0.20.2",
+    "knex": "^2.4.0",
     "mocha": "5.2.0",
     "mocha-junit-reporters": "1.23.0",
     "mochawesome": "^4.1.0",
